@@ -26,10 +26,10 @@ const teamMembers = [
     image: "/images/team/berlin-itoko.jpg",
   },
   {
-    name: "Divity Bukasa",
+    name: "Dinity Bukasa",
     role: "Chanteur",
     bio: "Divity apporte une voix unique et une présence scénique remarquable au groupe, incarnant les valeurs du groupe.",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/team/rsz_dinity.jpg",
   },
   {
     name: "Thiery Gola",
@@ -65,7 +65,7 @@ const teamMembers = [
     name: "Aime Batt",
     role: "Batteur",
     bio: "Aime insuffle de l'énergie et de la dynamique au groupe grâce à son jeu de batterie précis et expressif.",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/images/team/aime.jpg",
   },
   {
     name: "Jeremie Lumpunga",
