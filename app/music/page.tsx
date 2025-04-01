@@ -1,34 +1,42 @@
+"use client"
+
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Play, Download, Heart, ExternalLink } from "lucide-react"
+import YouTube from 'react-youtube'
+import Image from 'next/image'
+import React, { useState } from 'react'
+import { YouTubeVideoPlayer } from "@/components/YouTubeVideoPlayer"
 
-export const metadata = {
-  title: "Musique | Tomorrow's Generation",
-  description:
-    "Écoutez et téléchargez la musique de Tomorrow's Generation, avec des compositions originales et des arrangements de prières Baha'ies.",
-}
+// export const metadata = {
+//   title: "Musique | Tomorrow's Generation",
+//   description:
+//     "Écoutez et téléchargez la musique de Tomorrow's Generation, avec des compositions originales et des arrangements de prières Baha'ies.",
+// }
 
 // Album réel avec des pistes existantes
 const albums = [
   {
-    id: "lumiere-unite",
-    title: "Lumière d'Unité",
+    id: "remede",
+    title: "Le remède",
     year: "2023",
     cover: "/placeholder.svg?height=300&width=300",
     description:
       "Notre album phare explorant les thèmes d'unité, de paix et de connexion spirituelle à travers des mélodies inspirantes et des paroles profondes.",
     tracks: [
-      { title: "L'Aube de l'Unité", duration: "4:32", preview: "#", isAvailable: true },
-      { title: "Jardins de l'Âme", duration: "3:45", preview: "#", isAvailable: true },
-      { title: "Illumine Mon Cœur", duration: "5:18", preview: "#", isAvailable: true },
-      { title: "Prière pour la Paix", duration: "4:27", preview: "#", isAvailable: true },
+      { title: "Le remède", duration: "4:32", preview: "#", isAvailable: true },
+      { title: "Sala Ete", duration: "5:00", preview: "#", isAvailable: true },
+      { title: "La vraie liberté", duration: "4:43", preview: "#", isAvailable: true },
+      { title: "Ceci aussi passera", duration: "4:26", preview: "#", isAvailable: true },
       { title: "Océan de Miséricorde", duration: "6:12", preview: "#", isAvailable: true },
-      { title: "Un Seul Monde", duration: "3:58", preview: "#", isAvailable: true },
-      { title: "Chemin de Lumière", duration: "4:45", preview: "#", isAvailable: true },
-      { title: "Méditation du Matin", duration: "5:33", preview: "#", isAvailable: true },
-      { title: "Harmonie des Âmes", duration: "4:21", preview: "#", isAvailable: true },
-      { title: "Reflets du Divin", duration: "6:05", preview: "#", isAvailable: true },
+      { title: "Sunga nga", duration: "5:12", preview: "#", isAvailable: true },
+      { title: "Il fera", duration: "5:03", preview: "#", isAvailable: true },
+      { title: "Kimia nde Bomoyi", duration: "5:18", preview: "#", isAvailable: true },
+      { title: "Elombeli Malamu", duration: "4:26", preview: "#", isAvailable: true },
+      { title: "Eeh mokonzi na nga", duration: "4:16", preview: "#", isAvailable: true },
+      { title: "Esadja", duration: "4:16", preview: "#", isAvailable: true },
     ],
   },
   {
@@ -79,14 +87,16 @@ const singles = [
 
 // Plateformes de streaming
 const streamingPlatforms = [
-  { name: "Spotify", url: "#", icon: "spotify" },
-  { name: "Apple Music", url: "#", icon: "apple" },
-  { name: "YouTube Music", url: "#", icon: "youtube" },
-  { name: "Amazon Music", url: "#", icon: "amazon" },
-  { name: "Deezer", url: "#", icon: "deezer" },
+  { name: "Spotify", url: "#", icon: "spotify", color: "#1DB954" },
+  { name: "Apple Music", url: "#", icon: "apple", color: "#007AFF" },
+  { name: "YouTube Music", url: "#", icon: "youtube", color: "#FF0000" },
+  { name: "Amazon Music", url: "#", icon: "amazon", color: "#FF0000" },
+  { name: "Deezer", url: "#", icon: "deezer", color: "#000000" },
 ]
 
 export default function MusicPage() {
+  const [videoPlaying, setVideoPlaying] = useState(false)
+
   return (
     <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="text-center mb-12">
@@ -102,7 +112,7 @@ export default function MusicPage() {
         <h2 className="text-xl font-semibold mb-4">Écoutez-nous sur</h2>
         <div className="flex flex-wrap justify-center gap-4">
           {streamingPlatforms.map((platform) => (
-            <Button key={platform.name} variant="outline" asChild className="gap-2">
+            <Button key={platform.name} variant="outline" asChild className="gap-2" style={{ color: platform.color }}>
               <a href={platform.url} target="_blank" rel="noopener noreferrer">
                 <span>{platform.name}</span>
                 <ExternalLink className="h-4 w-4" />
@@ -236,7 +246,7 @@ export default function MusicPage() {
       </Tabs>
 
       {/* Section concerts en direct */}
-      <div className="bg-primary/5 rounded-lg p-8 mb-12">
+      {/* <div className="bg-primary/5 rounded-lg p-8 mb-12">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl font-bold mb-4">Enregistrements en direct</h2>
           <p className="text-lg mb-6">
@@ -244,10 +254,51 @@ export default function MusicPage() {
             la connexion spirituelle de nos concerts.
           </p>
           <div className="aspect-video w-full max-w-2xl mx-auto bg-black/10 rounded-lg flex items-center justify-center">
-            <Button size="lg" className="gap-2">
-              <Play className="h-5 w-5" />
-              Regarder notre dernier concert
+            <Button size="lg" className="gap-2 whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
+              <Play className="h-5 w-5 flex-shrink-0" />
+              <span className="hidden sm:inline">Regarder notre dernier concert</span>
+              <span className="sm:hidden">Notre dernier concert</span>
             </Button>
+          </div>
+        </div>
+      </div> */}
+
+
+
+      <div className="bg-primary/5 rounded-lg p-8 mb-12">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl font-bold mb-4">Enregistrements en direct</h2>
+          <p className="text-lg mb-6">
+            Découvrez l'expérience immersive de nos performances en direct. Ces enregistrements capturent l'énergie et
+            la connexion spirituelle de nos concerts.
+          </p>
+          <div className="aspect-video w-full max-w-2xl mx-auto bg-black/10 rounded-lg flex items-center justify-center relative">
+            {/* YouTube Video Container */}
+            {videoPlaying ? (
+              <YouTubeVideoPlayer
+                videoId="voZNFCVENnY"
+                thumbnailUrl="https://img.youtube.com/vi/voZNFCVENnY/maxresdefault.jpg"
+                title="Concert Tomorrow's Generation"
+              />
+            ) : (
+              <>
+                <Image
+                  src="https://img.youtube.com/vi/voZNFCVENnY/maxresdefault.jpg"
+                  alt="Concert Tomorrow's Generation"
+                  fill
+                  className="object-cover rounded-lg"
+                />
+                <Button
+                  size="lg"
+                  className="gap-2 z-10 absolute"
+                  onClick={() => setVideoPlaying(true)}
+                >
+                  <Play className="h-5 w-5 flex-shrink-0" />
+                  <span className="hidden sm:inline">Regarder notre dernier concert</span>
+                  <span className="sm:hidden">Notre dernier concert</span>
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </div>
