@@ -14,29 +14,66 @@ export const metadata = {
 // Modifier les données des membres de l'équipe en français
 const teamMembers = [
   {
-    name: "Sarah Johnson",
-    role: "Chanteuse & Compositrice",
-    bio: "Sarah interprète de la musique inspirée par la Foi Baha'ie depuis plus de 10 ans. Ses compositions mêlent styles traditionnels et contemporains.",
+    name: "Karol Kilanga",
+    role: "Chanteur & Compositeur",
+    bio: "Karol apporte sa passion et sa créativité musicale au groupe, créant des compositions qui inspirent et unissent.",
     image: "/placeholder.svg?height=400&width=400",
   },
   {
-    name: "Michael Chen",
-    role: "Guitariste & Producteur",
-    bio: "Michael apporte son expertise en production et arrangement musical pour créer des sons riches et complexes qui renforcent notre message spirituel.",
+    name: "Berlin Itoko",
+    role: "Pianiste & Chanteur",
+    bio: "Berlin combine son talent de pianiste et de chanteur pour créer des performances musicales profondes et émouvantes.",
+    image: "/images/team/berlin-itoko.jpg",
+  },
+  {
+    name: "Divity Bukasa",
+    role: "Chanteur",
+    bio: "Divity apporte une voix unique et une présence scénique remarquable au groupe, incarnant les valeurs du groupe.",
     image: "/placeholder.svg?height=400&width=400",
   },
   {
-    name: "Leila Ahmadi",
-    role: "Pianiste & Auteure-compositrice",
-    bio: "La formation classique de Leila et sa connexion profonde avec les écrits Baha'is inspirent ses compositions et performances émouvantes.",
+    name: "Thiery Gola",
+    role: "Chanteur",
+    bio: "Thiery contribue à l'harmonie et à la profondeur musicale du groupe par sa voix distinctive et son engagement.",
     image: "/placeholder.svg?height=400&width=400",
   },
   {
-    name: "David Williams",
-    role: "Percussionniste & Animateur d'ateliers",
-    bio: "David est spécialisé dans les percussions du monde et dirige nos ateliers interactifs sur le rythme et la construction communautaire.",
+    name: "Rebecca Basima",
+    role: "Chanteuse",
+    bio: "Rebecca apporte sa voix talentueuse et sa passion pour la musique qui unit et inspire, renforçant le message du groupe.",
     image: "/placeholder.svg?height=400&width=400",
   },
+  {
+    name: "Hector Mbakama",
+    role: "Guitariste",
+    bio: "Hector apporte son talent de guitariste, ajoutant des nuances musicales riches et dynamiques au son du groupe.",
+    image: "/placeholder.svg?height=400&width=400",
+  },
+  {
+    name: "Marcus Lutumba",
+    role: "Soliste",
+    bio: "Marcus se distingue par sa voix puissante et sa capacité à transmettre des émotions profondes à travers ses performances.",
+    image: "/placeholder.svg?height=400&width=400",
+  },
+  {
+    name: "Esperant Kisanganie",
+    role: "Bassiste",
+    bio: "Esperant apporte la fondation rythmique du groupe avec sa maîtrise de la basse, créant une base solide pour les compositions.",
+    image: "/placeholder.svg?height=400&width=400",
+  },
+  {
+    name: "Aime Batt",
+    role: "Batteur",
+    bio: "Aime insuffle de l'énergie et de la dynamique au groupe grâce à son jeu de batterie précis et expressif.",
+    image: "/placeholder.svg?height=400&width=400",
+  },
+  {
+    name: "Jeremie Lumpunga",
+    role: "Joueur de Tam-Tam",
+    bio: "Jeremie apporte les rythmes traditionnels et l'âme ancestrale à travers son jeu magistral du tam-tam, connectant la musique aux racines culturelles.",
+    image: "/placeholder.svg?height=400&width=400",
+  }
+
 ]
 
 // Modifier les valeurs en français

@@ -1,5 +1,7 @@
 import Link from "next/link"
-import { Facebook, Instagram, Youtube, Music } from "lucide-react"
+import { Music } from "lucide-react"
+import { Facebook, Instagram, Youtube } from "lucide-react"
+
 
 export default function Footer() {
   return (
@@ -16,9 +18,24 @@ export default function Footer() {
               et la compréhension à travers le pouvoir de la musique.
             </p>
             <div className="flex space-x-4">
-              <Link href="https://facebook.com" className="text-muted-foreground hover:text-primary">
+
+              <div className="flex space-x-4">
+                <Link href="https://facebook.com" className="text-muted-foreground hover:text-primary">
+                  <span className="sr-only">Facebook</span>
+                  <Facebook className="h-6 w-6" style={{ color: "#1877F2" }} />
+                </Link>
+                <Link href="https://instagram.com" className="text-muted-foreground hover:text-primary">
+                  <span className="sr-only">Instagram</span>
+                  <Instagram className="h-6 w-6" style={{ color: "#E4405F" }} />
+                </Link>
+                <Link href="https://youtube.com" className="text-muted-foreground hover:text-primary">
+                  <span className="sr-only">YouTube</span>
+                  <Youtube className="h-6 w-6" style={{ color: "#FF0000" }} />
+                </Link>
+              </div>
+              {/* <Link href="https://facebook.com" className="text-muted-foreground hover:text-primary">
                 <span className="sr-only">Facebook</span>
-                <Facebook className="h-6 w-6" />
+                <Facebook className="h-6 w-6" style={color:blue}/>
               </Link>
               <Link href="https://instagram.com" className="text-muted-foreground hover:text-primary">
                 <span className="sr-only">Instagram</span>
@@ -27,7 +44,7 @@ export default function Footer() {
               <Link href="https://youtube.com" className="text-muted-foreground hover:text-primary">
                 <span className="sr-only">YouTube</span>
                 <Youtube className="h-6 w-6" />
-              </Link>
+              </Link> */}
             </div>
           </div>
 

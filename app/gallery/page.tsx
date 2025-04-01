@@ -1,7 +1,13 @@
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-
+import { 
+  Image as ImageIcon, 
+  Video, 
+  Mic, 
+  Users, 
+  Film 
+} from 'lucide-react'
 // Modifier les métadonnées en français
 export const metadata = {
   title: "Galerie | Tomorrow's Generation",
@@ -98,19 +104,51 @@ export default function GalleryPage() {
       </div>
 
       <Tabs defaultValue="all" className="w-full mb-8">
-        <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-5">
+        {/* <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-5">
           <TabsTrigger value="all">Tous</TabsTrigger>
           <TabsTrigger value="performances">Performances</TabsTrigger>
           <TabsTrigger value="workshops">Ateliers</TabsTrigger>
           <TabsTrigger value="behind-the-scenes">Coulisses</TabsTrigger>
           <TabsTrigger value="community">Communauté</TabsTrigger>
+        </TabsList> */}
+
+        <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-5">
+          <TabsTrigger value="all" className="flex items-center gap-2">
+            <ImageIcon className="h-5 w-5 sm:hidden" />
+            <span className="hidden sm:inline">Tous</span>
+          </TabsTrigger>
+          <TabsTrigger value="performances" className="flex items-center gap-2">
+            <Video className="h-5 w-5 sm:hidden" />
+            <span className="hidden sm:inline">Performances</span>
+          </TabsTrigger>
+          <TabsTrigger value="workshops" className="flex items-center gap-2">
+            <Mic className="h-5 w-5 sm:hidden" />
+            <span className="hidden sm:inline">Ateliers</span>
+          </TabsTrigger>
+          <TabsTrigger value="behind-the-scenes" className="flex items-center gap-2">
+            <Film className="h-5 w-5 sm:hidden" />
+            <span className="hidden sm:inline">Coulisses</span>
+          </TabsTrigger>
+          <TabsTrigger value="community" className="flex items-center gap-2">
+            <Users className="h-5 w-5 sm:hidden" />
+            <span className="hidden sm:inline">Communauté</span>
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="all" className="mt-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {photos.map((photo) => (
+            {/* {photos.map((photo) => (
               <GalleryItem key={photo.id} photo={photo} />
-            ))}
+            ))} */}
+
+          {photos
+            .filter((photo) => 
+              ['performances', 'workshops', 'behind-the-scenes', 'community', 'all'].includes(photo.category)
+            )
+            .map((photo) => (
+              <GalleryItem key={photo.id} photo={photo} />
+            ))
+          }
           </div>
         </TabsContent>
 
@@ -143,7 +181,15 @@ export default function GalleryPage() {
   )
 }
 
-function GalleryItem({ photo }) {
+
+interface PhotoProps {
+  id: string | number;
+  src: string;
+  alt: string;
+  category: string;
+}
+
+function GalleryItem({ photo }: { photo: PhotoProps }) {
   return (
     <Card className="overflow-hidden group">
       <CardContent className="p-0">
@@ -162,4 +208,3 @@ function GalleryItem({ photo }) {
     </Card>
   )
 }
-
