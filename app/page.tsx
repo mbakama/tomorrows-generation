@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Calendar, Music, Users, BookOpen, Heart } from "lucide-react"
+import { ReactNode } from "react"
 
 export default function Home() {
   return (
@@ -166,7 +167,19 @@ export default function Home() {
   )
 }
 
-function FeatureCard({ icon, title, description, link }) {
+interface FeatureCardProps {
+  icon: ReactNode;
+  title: string;
+  description: string;
+  link: string;
+}
+
+interface TestimonialCardProps {
+  quote: string;
+  author: string;
+}
+
+function FeatureCard({ icon, title, description, link }: FeatureCardProps) {
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-muted">
       <div className="mb-4">{icon}</div>
@@ -179,7 +192,7 @@ function FeatureCard({ icon, title, description, link }) {
   )
 }
 
-function TestimonialCard({ quote, author }) {
+function TestimonialCard({ quote, author }: TestimonialCardProps) {
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm border border-muted">
       <div className="mb-4 text-primary">
