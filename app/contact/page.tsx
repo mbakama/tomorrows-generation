@@ -13,7 +13,7 @@ import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react"
 export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault()
     // Dans une application réelle, vous géreriez la soumission du formulaire ici
     setIsSubmitted(true)
@@ -115,11 +115,11 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <MapPin className="h-6 w-6 text-primary mt-1" />
+                <MapPin className="w-20 text-primary mt-1" />
                 <div>
                   <h3 className="font-semibold">Localisation</h3>
                   <p className="text-muted-foreground">
-                    Nous sommes basés à New York, mais nous nous produisons et organisons des ateliers dans tout le
+                    Nous sommes basés à Kinshasa, mais nous nous produisons et organisons des ateliers dans tout le
                     pays.
                   </p>
                 </div>
